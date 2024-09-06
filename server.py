@@ -3,8 +3,8 @@ from threading import Thread
 
 # server's IP address
 SERVER_HOST = "0.0.0.0"
-SERVER_PORT = 5002 # port we want to use
-separator_token = "<SEP>" # we will use this to separate the client name & message
+SERVER_PORT = 5002  # port we want to use
+separator_token = "<SEP>"  # we will use this to separate the client name & message
 
 # initialize list/set of all connected client's sockets
 client_sockets = set()
@@ -17,6 +17,7 @@ s.bind((SERVER_HOST, SERVER_PORT))
 # listen for upcoming connections
 s.listen(5)
 print(f"[*] Listening as {SERVER_HOST}:{SERVER_PORT}")
+
 
 def listen_for_client(cs):
     """
@@ -33,7 +34,7 @@ def listen_for_client(cs):
             print(f"[!] Error: {e}")
             client_sockets.remove(cs)
         else:
-            # if we received a message, replace the <SEP> 
+            # if we received a message, replace the <SEP>
             # token with ": " for nice printing
             msg = msg.replace(separator_token, ": ")
         # iterate over all connected sockets
