@@ -2,21 +2,24 @@ import socketio
 
 sio = socketio.Client()
 
-@sio.on('connect')
+
+@sio.on("connect")
 def on_connect():
-    print('Client Connected')
+    print("Client Connected")
 
-@sio.on('chat message')
+
+@sio.on("chat message")
 def on_message(data):
-    print('\nReceived Message: ', data)
+    print("\nReceived Message: ", data)
 
-@sio.on('disconnect')
+
+@sio.on("disconnect")
 def on_disconnect():
-    print('Client Disconnected')
+    print("Client Disconnected")
 
-sio.connect('http://127.0.0.1:5000')
 
+sio.connect("http://127.0.0.1:5000")
 
 
 while True:
-    sio.start_background_task(sio.emit('chat message', input('Input Message: ')))
+    sio.start_background_task(sio.emit("chat message", input("Input Message: ")))
